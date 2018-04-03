@@ -1,0 +1,1542 @@
+Document Type: WSE
+item: Global
+  Version=9.02
+  Title=OriginalSoftware Solutions W7x32x64 W10 7.1.4802 - Release 0
+  Flags=00000100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Copy Default=1
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000000010110000001010
+  Message Font=MS Sans Serif
+  Font Size=8
+  Pages Modified=00001000011000000000000000000000
+  Extra Pages=00000000000000000000000000010000
+  Disk Label=Default
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=&Properties
+  Variable Name1=_INIT_WINDOW_
+  Variable Default1=HIDE
+  Variable Flags1=00001000
+  Variable Name2=_SYS_
+  Variable Default2=C:\windows\system32
+  Variable Flags2=00001000
+  Variable Name3=_WIN_
+  Variable Default3=C:\windows
+  Variable Flags3=00001000
+  Variable Name4=_WISE_
+  Variable Default4=C:\Program Files (x86)\WiseScript Package Editor\WiseScript Package Editor
+  Variable Flags4=00001000
+  Requested Execution Level=asInvoker
+end
+item: Remark
+  Text=*******************************************************Script Version 2.4********************************************************
+end
+item: Open/Close INSTALL.LOG
+  Pathname=%TEMP%\INSTALL.LOG
+  Flags=00000010
+end
+item: Remark
+  Text=**************************************************x32x64 W7 and W10 Package***********************************************************
+end
+item: Set Variable
+  Variable=DNAME
+  Value=OriginalSoftware Solutions W7x32x64 W10 7.1.4802 - Release 0
+end
+item: Set Variable
+  Variable=APPNAME
+  Value=OriginalSoftware_Solutions_7.1.4802_0_W7x32x64_W10_P0_EN
+end
+item: Remark
+  Text=********************************************************SET VARIABLES*****************************************************************
+end
+item: Set Variable
+  Variable=DPNAME
+  Value=%APPNAME%,%DNAME%
+end
+item: Set Variable
+  Variable=MSINAME
+  Value=Original Software Setup Build 4802.msi
+end
+item: Set Variable
+  Variable=MSTNAME
+  Value=OriginalSoftware_Solutions_7.1.4802_0_W7x32x64_W10_P0_EN.mst
+end
+item: Set Variable
+  Variable=DSKPATH
+  Value=Original Software 4802\Qualify 4802.lnk
+end
+item: Set Variable
+  Variable=APPNAME_MAJOR
+  Value=Solutions_7.1.4802
+end
+item: Get Environment Variable
+  Variable=AUP
+  Environment=ALLUSERSPROFILE
+end
+item: Get Environment Variable
+  Variable=WINDIR
+  Environment=WINDIR
+end
+item: Set Variable
+  Variable=LOCALCOPY
+  Value=%windir%\Downloaded Installations\%appname%\
+end
+item: Set Variable
+  Variable=LOG
+  Value=%windir%\Msilogs\%APPNAME%.LOG
+end
+item: Set Variable
+  Variable=PREREQLOG
+  Value=%windir%\Msilogs\%APPNAME%_Pre-req.LOG
+end
+item: Get Environment Variable
+  Variable=PUB
+  Environment=PUBLIC
+end
+item: Install File
+  Source=.\ISMIF32.exe
+  Destination=%TEMP%\ISMIF32.exe
+  Flags=0000000010100010
+end
+item: Install File
+  Source=.\Language.ini
+  Destination=%TEMP%\Language.ini
+  Flags=0000000010100010
+end
+item: Set Variable
+  Variable=VC2017_X86
+  Value=%LOCALCOPY%\Dependencies\vc_redist.x86.exe
+end
+item: Set Variable
+  Variable=VC2017_X64
+  Value=%LOCALCOPY%\Dependencies\vc_redist.x64.exe
+end
+item: Set Variable
+  Variable=VC2017LOG
+  Value=%windir%\Msilogs\%APPNAME%_VC2017X86.LOG
+end
+item: Set Variable
+  Variable=VC2017X64LOG
+  Value=%windir%\Msilogs\%APPNAME%_VC2017X64.LOG
+end
+item: Remark
+  Text=*******************************************COMMAND LINE SWITCH(Dskshort/Pcmaster/INI File/qn*****************************************************
+end
+item: Get Registry Key Value
+  Variable=CHECK
+  Key=SYSTEM\CurrentControlSet\Control\Nls\Language
+  Value Name=Default
+  Flags=00000100
+end
+item: Set Variable
+  Variable=LANG
+  Value=1033
+end
+item: Remark
+  Text=**********************************French(fr-fr)****************************************
+end
+item: If/While Statement
+  Variable=CHECK
+  Value=040c
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=French
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME%
+end
+item: Remark
+  Text=**********************************German(de-de)****************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0407
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=German
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=**********************************Dutch(nl-nl)*******************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0413
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Dutch
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=***************************************Portugese(pt-br)****************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0416
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Portuguese
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=**********************************Danish(da-dk)*********************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0406
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Danish
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=***************************************Spanish(es-es)****************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0c0a
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Spanish
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=**********************************Norwegian(Bokmal(nb-no))********************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0414
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Norwegian
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=***************************************Swedish(sv-se)****************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=041d
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Swedish
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=**********************************Finnish(fi-fi)****************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=040b
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Finish
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=**************************************Estonian***************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0425
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Estonian
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=**************************************POLISH***************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0415
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Polish
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME%
+end
+item: Remark
+  Text=**************************************Czech***************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0405
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Czech
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Remark
+  Text=**************************************Italian***************************************
+end
+item: ElseIf Statement
+  Variable=CHECK
+  Value=0410
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=Italian
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: Else Statement
+end
+item: Remark
+  Text=**************************************ENGLISH***************************************
+end
+item: Read INI Value
+  Variable=DP
+  Pathname=%TEMP%\Language.ini
+  Section=English
+  Item=Caption3
+end
+item: Parse String
+  Source=%DP%
+  Pattern=%%DNAME%%
+  Variable1=DM1
+  Variable2=DM2
+  Flags=00000001
+end
+item: Set Variable
+  Variable=D
+  Value=%DM1% %DNAME% %DM2%
+end
+item: End Block
+end
+item: Remark
+  Text=*******************************************COMMAND LINE SWITCH(Dskshort/Pcmaster/INI File/qn*****************************************************
+end
+item: Set Variable
+  Variable=CMDSW1
+  Value=%CMDLINE%
+end
+item: If/While Statement
+  Variable=CMDSW1
+  Value=/?
+end
+item: Display Message
+  Title=%DNAME%
+  Text=%DNAME% Setup Syntax:-
+  Text=
+  Text=Setup.exe /?     -  For help
+  Text=
+  Text=Setup.exe /q[n|b!]
+  Text=    	Sets user interface level
+  Text=	/qb! - Basic UI without cancel button                  /qn - No UI                                                         /dskshortcut - it will display the shortcut on desktop.                                            /pcmaster-Progress message and no installation completed prompt.                            
+  Text=Default is Setup.exe /qb!
+  Text=	
+  Flags=00100000
+end
+item: Exit Installation
+  Flags=100
+end
+item: End Block
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qb!
+end
+item: Set Variable
+  Variable=DSKSHORTCUT
+  Value=0
+end
+item: Set Variable
+  Variable=PCMASTER
+  Value=0
+end
+item: Parse String
+  Source=%CMDSW1%
+  Pattern= 
+  Variable1=CMD1
+  Variable2=CMD234
+end
+item: Parse String
+  Source=%CMD234%
+  Pattern= 
+  Variable1=CMD2
+  Variable2=CMD34
+end
+item: Parse String
+  Source=%CMD34%
+  Pattern= 
+  Variable1=CMD3
+  Variable2=CMD4
+end
+item: If/While Statement
+  Variable=CMD1
+  Flags=00000001
+end
+item: If/While Statement
+  Variable=CMD1
+  Value=/dskshortcut
+  Flags=00000100
+end
+item: Set Variable
+  Variable=DSKSHORTCUT
+  Value=1
+end
+item: ElseIf Statement
+  Variable=CMD1
+  Value=/PCMASTER
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=%CMD1%
+end
+item: ElseIf Statement
+  Variable=CMD1
+  Value=/QN
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qn
+end
+item: ElseIf Statement
+  Variable=CMD1
+  Value=/QB!
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qb!
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=FILENAME
+  Value=%CMD1%
+end
+item: End Block
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=CMD2
+  Flags=00000001
+end
+item: If/While Statement
+  Variable=CMD2
+  Value=/dskshortcut
+  Flags=00000100
+end
+item: Set Variable
+  Variable=DSKSHORTCUT
+  Value=1
+end
+item: ElseIf Statement
+  Variable=CMD2
+  Value=/PCMASTER
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=%CMD2%
+end
+item: ElseIf Statement
+  Variable=CMD2
+  Value=/qn
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qn
+end
+item: ElseIf Statement
+  Variable=CMD2
+  Value=/QB!
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qb!
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=FILENAME
+  Value=%CMD2%
+end
+item: End Block
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=CMD3
+  Flags=00000001
+end
+item: If/While Statement
+  Variable=CMD3
+  Value=/dskshortcut
+  Flags=00000100
+end
+item: Set Variable
+  Variable=DSKSHORTCUT
+  Value=1
+end
+item: ElseIf Statement
+  Variable=CMD3
+  Value=/PCMASTER
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=%CMD3%
+end
+item: ElseIf Statement
+  Variable=CMD3
+  Value=/qn
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qn
+end
+item: ElseIf Statement
+  Variable=CMD3
+  Value=/QB!
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qb!
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=FILENAME
+  Value=%CMD3%
+end
+item: End Block
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=CMD4
+  Flags=00000001
+end
+item: If/While Statement
+  Variable=CMD4
+  Value=/dskshortcut
+  Flags=00000100
+end
+item: Set Variable
+  Variable=DSKSHORTCUT
+  Value=1
+end
+item: ElseIf Statement
+  Variable=CMD4
+  Value=/PCMASTER
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=%CMD4%
+end
+item: ElseIf Statement
+  Variable=CMD4
+  Value=/qn
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qn
+end
+item: ElseIf Statement
+  Variable=CMD4
+  Value=/QB!
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qb!
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=FILENAME
+  Value=%CMD4%
+end
+item: End Block
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=CMDSW
+  Value=/pcmaster
+  Flags=00000100
+end
+item: Set Variable
+  Variable=PCMASTER
+  Value=1
+end
+item: Set Variable
+  Variable=CMDSW
+  Value=/qb!
+end
+item: End Block
+end
+item: Remark
+  Text=****************************************MSILOGS Directory Check*********************************************************
+end
+item: Check if File/Dir Exists
+  Pathname=%WINDIR%\MSILOGS\
+  Flags=01000101
+end
+item: Else Statement
+end
+item: Create Directory
+  Pathname=%WINDIR%\MSILOGS\
+end
+item: End Block
+end
+item: Delete File
+  Pathname=%WINDIR%\MSILOGS\%APPNAME%_Pre-req.log
+end
+item: Remark
+  Text=******************************CODE FOR CHECKING DATE TIME************************************
+end
+item: Get System Information
+  Variable=DATE
+end
+item: Parse String
+  Source=%DATE%
+  Pattern= 
+  Variable1=DATE1
+end
+item: Parse String
+  Source=%DATE1%
+  Pattern=/
+  Variable1=MM
+  Variable2=DDYY
+end
+item: Parse String
+  Source=%DDYY%
+  Pattern=/
+  Variable1=DD
+  Variable2=YY
+end
+item: Set Variable
+  Variable=YY
+  Value=20%YY%
+end
+item: Set Variable
+  Variable=INSTDATE
+  Value=%DD%/%MM%/%YY%
+end
+item: Remark
+  Text=******************************CHECKING Windows 7 SP1************************************
+end
+item: Get Registry Key Value
+  Variable=WINW7SP1
+  Key=SOFTWARE\Microsoft\Windows NT\CurrentVersion
+  Value Name=CurrentBuild
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=WINW7SP1
+  Value=7601
+  Flags=00001000
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=ERROR 100 : Windows 7 SP1 or Windows 10 Operating System is not detected on this machine.
+  Line Number=0
+end
+item: Execute Program
+  Pathname=%TEMP%\Ismif32.exe
+  Command Line=-f %APPNAME_MAJOR% -s 0 -d "ERROR 100 : Windows 7 SP1 or Windows 10 Operating System is not detected on this machine."
+  Flags=00001010
+end
+item: Exit Installation
+  Flags=100
+end
+item: End Block
+end
+item: Remark
+  Text=*************************************CHECK OPERATING SYSTEMS, 32/64BIT AND SHIMS**********************************************
+end
+item: Get System Information
+  Variable=BIT6432
+  Flags=00011000
+end
+item: If/While Statement
+  Variable=WINW7SP1
+  Value=7601
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=BIT6432
+  Value=1
+  Flags=00000100
+end
+item: Set Variable
+  Variable=OS64
+  Value=1
+end
+item: Edit Registry
+  Total Keys=1
+  Key=SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant
+  New Value=%TEMP%\SGAPF\InstCom.EXE
+  New Value=%TEMP%\SGAPF\ComMsg.EXE
+  New Value=%TEMP%\SGAPF\InstComU.EXE
+  New Value=%TEMP%\SGAPF\ComMsgU.EXE
+  New Value=%TEMP%\SGAPF\ExeCheck.EXE
+  New Value=%TEMP%\SGAPF\ECUninst.EXE
+  New Value=%INST%\Setup.EXE
+  New Value=%INST%\Uninstall.EXE
+  New Value=%TEMP%\ISMIF32.exe
+  New Value=%LOCALCOPY%Dependencies\vc_redist.x86.exe
+  New Value=%LOCALCOPY%Dependencies\vc_redist.x64.exe
+  New Value=
+  Value Name=ExecutablesToExclude
+  Root=2
+  Data Type=2
+  x64 Support=1
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=Windows 7 SP1 64bit Operating System is detected on this machine.
+  Line Number=0
+end
+item: ElseIf Statement
+  Variable=BIT6432
+  Value=0
+  Flags=00000100
+end
+item: Set Variable
+  Variable=OS32
+  Value=1
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=Windows 7 SP1 32 Bit operating system is detected on this machine.
+  Line Number=0
+end
+item: Edit Registry
+  Total Keys=1
+  Key=SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant
+  New Value=%TEMP%\SGAPF\InstCom.EXE
+  New Value=%TEMP%\SGAPF\ComMsg.EXE
+  New Value=%TEMP%\SGAPF\InstComU.EXE
+  New Value=%TEMP%\SGAPF\ComMsgU.EXE
+  New Value=%TEMP%\SGAPF\ExeCheck.EXE
+  New Value=%TEMP%\SGAPF\ECUninst.EXE
+  New Value=%INST%\Setup.EXE
+  New Value=%INST%\Uninstall.EXE
+  New Value=%TEMP%\ISMIF32.exe
+  New Value=%LOCALCOPY%Dependencies\vc_redist.x86.exe
+  New Value=%LOCALCOPY%Dependencies\vc_redist.x64.exe
+  New Value=
+  Value Name=ExecutablesToExclude
+  Root=2
+  Data Type=2
+end
+item: End Block
+end
+item: ElseIf Statement
+  Variable=WINW7SP1
+  Value=10240
+  Flags=00000111
+end
+item: If/While Statement
+  Variable=BIT6432
+  Value=1
+  Flags=00000100
+end
+item: Set Variable
+  Variable=OS64
+  Value=1
+end
+item: Edit Registry
+  Total Keys=1
+  Key=SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant
+  New Value=%TEMP%\SGAPF\InstCom.EXE
+  New Value=%TEMP%\SGAPF\ComMsg.EXE
+  New Value=%TEMP%\SGAPF\InstComU.EXE
+  New Value=%TEMP%\SGAPF\ComMsgU.EXE
+  New Value=%TEMP%\SGAPF\ExeCheck.EXE
+  New Value=%TEMP%\SGAPF\ECUninst.EXE
+  New Value=%INST%\Setup.EXE
+  New Value=%INST%\Uninstall.EXE
+  New Value=%TEMP%\ISMIF32.exe
+  New Value=%LOCALCOPY%Dependencies\vc_redist.x86.exe
+  New Value=%LOCALCOPY%Dependencies\vc_redist.x64.exe
+  New Value=
+  Value Name=ExecutablesToExclude
+  Root=2
+  Data Type=2
+  x64 Support=1
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=Windows 10 64bit Operating System is detected on this machine.
+  Line Number=0
+end
+item: ElseIf Statement
+  Variable=BIT6432
+  Value=0
+  Flags=00000100
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=ERROR 100 : Windows 10 64BIT Operating System is not detected on this machine.
+  Line Number=0
+end
+item: Execute Program
+  Pathname=%TEMP%\Ismif32.exe
+  Command Line=-f %APPNAME_MAJOR% -s 0 -d "ERROR 100 : Windows 10 64BIT Operating System is not detected on this machine."
+  Flags=00001010
+end
+item: Exit Installation
+  Flags=100
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+  Text=************************************************************************PRE-REQUISITES CHECK***************************************************
+end
+item: Remark
+  Text=*************************************************************************************DOT NET FRAME WORK 4.5 check*******************************************************
+end
+item: Get Registry Key Value
+  Variable=DOTNET45FULL
+  Key=SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full
+  Value Name=Release
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=DOTNET45FULL
+  Value=378389
+  Flags=00000111
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=MS Dotnet Framework v4.5 Full is installed on this machine
+  Line Number=0
+  Flags=00010000
+end
+item: Set Variable
+  Variable=DOTNET
+  Value=1
+end
+item: End Block
+end
+item: Remark
+  Text=*********************************************************************For more information refer MS Dot Net Versions check document*******************************************************
+end
+item: If/While Statement
+  Variable=DOTNET
+  Value=1
+  Flags=00000101
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=ERROR 100 : MS DotNet Framework v4.5 or higher is not installed on this Machine
+  Line Number=0
+  Flags=00010000
+end
+item: Execute Program
+  Pathname=%TEMP%\Ismif32.exe
+  Command Line=-f %APPNAME_MAJOR% -s 0 -d "ERROR 100 : MS DotNet Framework v4.5 or higher is not installed on this Machine"
+  Flags=00001010
+end
+item: Exit Installation
+  Flags=100
+end
+item: End Block
+end
+item: Remark
+  Text=*********************************************************************PACKAGE ALREADY INSTALL*******************************************************
+end
+item: Get Registry Key Value
+  Variable=PKG
+  Key=SOFTWARE\SG\Applications\%APPNAME_MAJOR%
+  Value Name=Description
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=PKG
+  Value=%APPNAME%
+  Flags=00000100
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=%APPNAME% is already installed on the machine.
+  Line Number=0
+  Flags=00010000
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+  Text=*************************************************************Source installed*******************************************
+end
+item: Get Registry Key Value
+  Variable=SOURCE
+  Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{E466A4AC-B0F1-465C-A3F4-2B38B3626C34}
+  Value Name=DisplayVersion
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=SOURCE
+  Value=7.1.4802
+  Flags=00000111
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=Original Software Solutions v7.1.4802 is already installed on this machine.
+  Line Number=0
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+  Text=****************************************COPY FILES TO %LOCALCOPY%*********************************************************
+end
+item: If/While Statement
+  Variable=CMDSW
+  Value=/qb!
+  Flags=00000100
+end
+item: Custom Script Item
+  Filename=Display Progress Message.wse
+  Variable Name1=_CENTER_
+  Variable Value1=AB
+  Variable Name2=_WIDTH_
+  Variable Value2=400
+  Variable Name3=_MSG_TITLE_
+  Variable Value3=%DNAME%
+  Variable Name4=HELPFILE
+  Variable Value4=C:\Program Files\Symantec\Wise Package Studio\Help\WiseScriptPackageEditor.chm
+  Variable Name5=_OPTION_
+  Variable Value5=B
+  Variable Name6=_HEIGHT_
+  Variable Value6=150
+  Variable Name7=_Y_POS_
+  Variable Name8=_MSG_TEXT_
+  Variable Value8=%D%
+  Variable Name9=_X_POS_
+end
+item: End Block
+end
+item: Copy Local File
+  Source=%INST%\*.*
+  Destination=%LOCALCOPY%\
+  Flags=0000000111100010
+end
+item: Install File
+  Source=.\Confirm.txt
+  Destination=%LOCALCOPY%Confirm.txt
+  Flags=0000000010100010
+end
+item: Remark
+  Text=*************************************************************ExeCheck*******************************************
+end
+item: If/While Statement
+  Variable=CMDSW
+  Value=/qb!
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=PCMASTER
+  Value=1
+  Flags=00000001
+end
+item: Custom Script Item
+  Filename=Display Progress Message.wse
+  Variable Name1=_CENTER_
+  Variable Value1=AB
+  Variable Name2=_WIDTH_
+  Variable Value2=400
+  Variable Name3=_MSG_TITLE_
+  Variable Value3=%DNAME%
+  Variable Name4=HELPFILE
+  Variable Value4=C:\Program Files\Symantec\Wise Package Studio\Help\WiseScriptPackageEditor.chm
+  Variable Name5=_OPTION_
+  Variable Value5=A
+  Variable Name6=_MSG_TEXT_
+  Variable Value6=Please wait while %DNAME% is being installed.
+  Variable Name7=_Y_POS_
+  Variable Name8=_HEIGHT_
+  Variable Value8=150
+  Variable Name9=_X_POS_
+end
+item: Install File
+  Source=.\ExeCheck.EXE
+  Destination=%TEMP%\SGAPF\ExeCheck.EXE
+  Flags=0000000010100010
+end
+item: Execute Program
+  Pathname=%TEMP%\SGAPF\ExeCheck.EXE
+  Command Line=%DPNAME%
+  Flags=00000010
+end
+item: Custom Script Item
+  Filename=Display Progress Message.wse
+  Variable Name1=_CENTER_
+  Variable Value1=AB
+  Variable Name2=_WIDTH_
+  Variable Value2=400
+  Variable Name3=_MSG_TITLE_
+  Variable Value3=%DNAME%
+  Variable Name4=HELPFILE
+  Variable Value4=C:\Program Files\Symantec\Wise Package Studio\Help\WiseScriptEditor.chm
+  Variable Name5=_OPTION_
+  Variable Value5=B
+  Variable Name6=_HEIGHT_
+  Variable Value6=150
+  Variable Name7=_Y_POS_
+  Variable Name8=_MSG_TEXT_
+  Variable Value8=%D%
+  Variable Name9=_X_POS_
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+  Text=****************************************CHECK FOR VCREDIST 2017-x86********************************************************
+end
+item: Get Registry Key Value
+  Variable=VCREG17_X86
+  Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{404c9c27-8377-4fd1-b607-7ca635db4e49}
+  Value Name=DisplayVersion
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=VCREG17_X86
+  Value=14.11.25325.0
+  Flags=00000100
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=MS VisualC++2017 Redis x86 is already installed on this machine.
+  Line Number=0
+  Flags=00010000
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=COMMAND
+  Value=/install /quiet /qn /norestart /log "%VC2017LOG%"
+end
+item: Execute Program
+  Pathname="%VC2017_X86%"
+  Command Line=%COMMAND%
+  Default Directory=%LOCALCOPY%
+  Flags=00000010
+end
+item: Set Variable
+  Variable=EXITCODE
+  Value=%INSTALL_RESULT%
+end
+item: If/While Statement
+  Variable=INSTALL_RESULT
+  Value=0
+end
+item: ElseIf Statement
+  Variable=INSTALL_RESULT
+  Value=3010
+end
+item: Else Statement
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=ERROR %INSTALL_RESULT% : MS VisualC++2017 Redis x86 failed to install.
+  Line Number=0
+end
+item: Execute Program
+  Pathname=%TEMP%\Ismif32.exe
+  Command Line=-f %APPNAME_MAJOR% -s 0 -d "ERROR %INSTALL_RESULT% : MS VisualC++2017 Redis x86 failed to install."
+  Flags=00001010
+end
+item: Call DLL Function
+  Pathname=%SYS32%\Kernel32.dll
+  Function Name=ExitProcess
+  Argument List=20EXITCODE
+  Return Variable=2
+  Flags=00100000
+end
+item: End Block
+end
+item: Edit Registry
+  Total Keys=3
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{404c9c27-8377-4fd1-b607-7ca635db4e49}
+    New Value=1
+    Value Name=NoRemove
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{404c9c27-8377-4fd1-b607-7ca635db4e49}
+    New Value=1
+    Value Name=NoModify
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{404c9c27-8377-4fd1-b607-7ca635db4e49}
+    New Value=1
+    Value Name=NoRepair
+    Root=2
+    Data Type=3
+  end
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=MS VisualC++2017 Redis x86 is successfully installed  by the package.
+  Line Number=0
+  Flags=00010000
+end
+item: End Block
+end
+item: Remark
+  Text=****************************************CHECK FOR VCREDIST 2017-x64********************************************************
+end
+item: If/While Statement
+  Variable=OS64
+  Value=1
+end
+item: Get Registry Key Value
+  Variable=VCREG17_X64
+  Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{6c6356fe-cbfa-4944-9bed-a9e99f45cb7a}
+  Value Name=DisplayVersion
+  Flags=00000100
+end
+item: If/While Statement
+  Variable=VCREG17_X64
+  Value=14.11.25325.0
+  Flags=00000100
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=MS VisualC++2017 Redis x64 is already installed on this machine.
+  Line Number=0
+  Flags=00010000
+end
+item: Else Statement
+end
+item: Execute Program
+  Pathname=%VC2017_X64%
+  Command Line=/install /quiet /qn /norestart /log "%VC2017X64LOG%"
+  Default Directory=%LOCALCOPY%
+  Flags=00000010
+end
+item: Set Variable
+  Variable=EXITCODE
+  Value=%INSTALL_RESULT%
+end
+item: If/While Statement
+  Variable=INSTALL_RESULT
+  Value=0
+end
+item: ElseIf Statement
+  Variable=INSTALL_RESULT
+  Value=3010
+end
+item: Else Statement
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=ERROR %INSTALL_RESULT% : MS VisualC++2017 Redis x64 failed to install.
+  Line Number=0
+end
+item: Execute Program
+  Pathname=%TEMP%\Ismif32.exe
+  Command Line=-f %APPNAME_MAJOR% -s 0 -d "ERROR %INSTALL_RESULT% : MS VisualC++2017 Redis x64 failed to install."
+  Flags=00001010
+end
+item: Call DLL Function
+  Pathname=%SYS32%\Kernel32.dll
+  Function Name=ExitProcess
+  Argument List=20EXITCODE
+  Return Variable=2
+  Flags=00100000
+end
+item: End Block
+end
+item: Edit Registry
+  Total Keys=3
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{6c6356fe-cbfa-4944-9bed-a9e99f45cb7a}
+    New Value=1
+    Value Name=NoRemove
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{6c6356fe-cbfa-4944-9bed-a9e99f45cb7a}
+    New Value=1
+    Value Name=NoModify
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{6c6356fe-cbfa-4944-9bed-a9e99f45cb7a}
+    New Value=1
+    Value Name=NoRepair
+    Root=2
+    Data Type=3
+  end
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=MS VisualC++2017 Redis x64 is successfully installed  by the package.
+  Line Number=0
+  Flags=00010000
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+  Text=************************************************************************INSTALLATION************************************************************
+end
+item: Execute Program
+  Pathname=%SYS32%\msiexec.exe
+  Command Line=/i "%LOCALCOPY%%MSINAME%" TRANSFORMS="%LOCALCOPY%%MSTNAME%" %CMDSW% /l*v "%LOG%"
+  Default Directory=%LOCALCOPY%
+  Flags=00000010
+end
+item: Set Variable
+  Variable=EXITCODE
+  Value=%INSTALL_RESULT%
+end
+item: If/While Statement
+  Variable=INSTALL_RESULT
+  Value=0
+end
+item: ElseIf Statement
+  Variable=INSTALL_RESULT
+  Value=3010
+end
+item: Else Statement
+end
+item: Insert Line into Text File
+  Pathname=%PREREQLOG%
+  New Text=ERROR %INSTALL_RESULT% : %APPNAME% failed to install.
+  Line Number=0
+end
+item: Execute Program
+  Pathname=%TEMP%\Ismif32.exe
+  Command Line=-f %APPNAME_MAJOR% -s 0 -d "ERROR %INSTALL_RESULT% : %APPNAME% failed to install."
+  Flags=00001010
+end
+item: Call DLL Function
+  Pathname=%SYS32%\Kernel32.dll
+  Function Name=ExitProcess
+  Argument List=20EXITCODE
+  Return Variable=2
+  Flags=00100000
+end
+item: End Block
+end
+item: Remark
+  Text=************************************************************ DESKTOP SHORTCUT HANDLING*********************************************************
+end
+item: Set Variable
+  Variable=STARTMENU
+  Value=%AUP%\Microsoft\Windows\Start Menu\Programs
+end
+item: If/While Statement
+  Variable=DSKSHORTCUT
+  Value=1
+end
+item: Copy Local File
+  Source=%STARTMENU%\%DSKPATH%
+  Destination=%PUB%\Desktop\Qualify 4802.lnk
+  Flags=0000000011100010
+end
+item: End Block
+end
+item: Remark
+  Text=*****************************************************************Active Setup****************************************************************
+end
+item: Delete File
+  Pathname=%AUP%\SG\APF\Solution_UN.EXE
+end
+item: Edit Registry
+  Total Keys=1
+  Key=SOFTWARE\Microsoft\Active Setup\Installed Components\Solution_UN
+  New Value=%APPNAME_MAJOR%_UN
+  New Value=
+  Root=130
+end
+item: Install File
+  Source=.\Solution_IN.EXE
+  Destination=%AUP%\SG\APF\Solution_IN.EXE
+  Flags=0000000010100010
+end
+item: Edit Registry
+  Total Keys=3
+  item: Key
+    Key=SOFTWARE\Microsoft\Active Setup\Installed Components\%APPNAME_MAJOR%
+    New Value=%APPNAME_MAJOR%
+    New Value=
+    Root=2
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Active Setup\Installed Components\%APPNAME_MAJOR%
+    New Value=%AUP%\SG\APF\Solution_IN.EXE
+    New Value=
+    Value Name=StubPath
+    Root=2
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Active Setup\Installed Components\%APPNAME_MAJOR%
+    New Value=1,0,0,0
+    Value Name=Version
+    Root=2
+  end
+end
+item: Remark
+  Text=************************************************************HARDWARE INVENTORY*********************************************************
+end
+item: Execute Program
+  Pathname=%WINDIR%\System32\wbem\WMIC.exe
+  Command Line=/namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000001}" /NOINTERACTIVE
+  Flags=00001010
+end
+item: Remark
+  Text=****************************************************************INSTALLATION COMPLETE***************************************************
+end
+item: If/While Statement
+  Variable=PCMASTER
+  Value=1
+  Flags=00000001
+end
+item: If/While Statement
+  Variable=CMDSW
+  Value=/qn
+  Flags=00000101
+end
+item: Install File
+  Source=.\InstCom.EXE
+  Destination=%TEMP%\SGAPF\InstCom.EXE
+  Flags=0000000010100010
+end
+item: Custom Script Item
+  Filename=Display Progress Message.wse
+  Variable Name1=_CENTER_
+  Variable Value1=AB
+  Variable Name2=_WIDTH_
+  Variable Value2=400
+  Variable Name3=_MSG_TITLE_
+  Variable Value3=%DNAME%
+  Variable Name4=HELPFILE
+  Variable Value4=C:\Program Files\Symantec\Wise Package Studio\Help\WiseScriptPackageEditor.chm
+  Variable Name5=_OPTION_
+  Variable Value5=A
+  Variable Name6=_HEIGHT_
+  Variable Value6=150
+  Variable Name7=_Y_POS_
+  Variable Name8=_MSG_TEXT_
+  Variable Value8=Please wait while %DNAME% is being installed.
+  Variable Name9=_X_POS_
+end
+item: Execute Program
+  Pathname=%TEMP%\SGAPF\InstCom.EXE
+  Command Line=%DNAME%
+  Flags=00000010
+end
+item: End Block
+end
+item: End Block
+end
